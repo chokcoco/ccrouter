@@ -1,0 +1,48 @@
+/* 多余省略 */
+
+%ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* 绝对定位垂直水平居中 */
+
+%hvcenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/* 伪类通用定义 */
+
+@mixin pesudo($top:0, $left:0) {
+	content: "";
+	position: absolute;
+	top: $top;
+	left: $left;
+}
+
+
+/* 字符通用设置 */
+
+@mixin fontSet($fontSize, $color: #fff, $align: center) {
+	font-size: px2rem($fontSize);
+	color: $color;
+	text-align: $align;
+}
+
+
+/* 通用按钮设置 */
+
+@mixin btnSet($width, $height, $fontSize: 16px, $color: #fff) {
+	width: $width;
+	height: $height;
+	line-height: $height;
+	font-size: $fontSize;
+	color: $color;
+	text-align: center;
+	cursor: pointer;
+}

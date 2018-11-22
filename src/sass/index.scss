@@ -1,0 +1,41 @@
+@charset "utf-8";
+@import "./base/reset.scss";
+@import "./util/common.scss";
+
+html,
+body {
+    background: #fff;
+}
+
+.g-container {
+    position: relative;
+}
+
+.g-nav {
+    width: 20vw;
+    height: 100vh;
+    padding: 2vh;
+    font-size: 24px;
+    line-height: 52px;
+    border-right: 1px solid #333;
+    text-align: center;
+    box-sizing: border-box;
+
+    li {
+        cursor: pointer;
+
+        &:hover {
+            background: #ddd;
+        }
+    }
+}
+
+#g-router {
+    position: absolute;
+    left: 20vw;
+    top: 0;
+    width: 80vw;
+    box-sizing: border-box;
+    padding: 2vh;
+    font-size: 18px;
+}
