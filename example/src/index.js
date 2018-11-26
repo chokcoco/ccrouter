@@ -10,7 +10,7 @@ const router = new Router('g-router');
 
 
 router.route('home', home);
-router.route('mine', mine);
+router.route('mine/:id', mine);
 router.route('*', home);
 
 // 使用路由中间件
@@ -27,7 +27,7 @@ document.querySelectorAll('.j-home')[0].addEventListener("click", (event) => {
 });
 
 document.querySelectorAll('.j-mine')[0].addEventListener("click", (event) => {
-    router.go('mine');
+    router.go('mine/cocoqiao');
 });
 
 document.querySelectorAll('.j-back')[0].addEventListener("click", (event) => {

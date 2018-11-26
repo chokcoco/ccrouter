@@ -1,4 +1,5 @@
-import hashRouterMap from "./hashRouter/index"
+import hashRouterMap from "./src/hashRouterMap/index";
+import hashRouterCache from "./src/hashRouterCache/index";
 
 export default class Router {
 
@@ -13,13 +14,12 @@ export default class Router {
             throw new Error(`Can not get #${id} routerContainer, please confirm document.getElementById(${id}) is exist...`)
         }
 
-        // cahce
-        this._cache = [];
-
-        // middleware 
+        // 路由中间件数组 
         this._middleware = [];
 
-        // routes array
+        // 路由缓存
+        this.cache = new hashRouterCache();
+        // 路由规则
         this.routes = new hashRouterMap();
 
         this._init();
@@ -35,7 +35,7 @@ export default class Router {
             // 路由匹配结果
             this._matchedCount = matchedRoutes.length;
             // 执行路由
-            this._fireHandlers(matchedRoutes, this._cache[path]);
+            this._fireHandlers(matchedRoutes, this.cache[path]);
         }
 
         // 设置监听器
@@ -52,10 +52,10 @@ export default class Router {
 
         matchedRoutes.map((item) => {
 
-            // const cache = this._getCache(item)
+            const cache = this.cache.getCache(item);
 
             const request = {
-                body: body,
+                body: body || cache,
                 query: item.query,
                 params: item.params
             }
@@ -70,7 +70,7 @@ export default class Router {
             // 执行渲染 handler
             item.handler(request);
 
-            // this._cacheBody(body, item);
+            this.cache.setCache(item, body);
         });
     }
 

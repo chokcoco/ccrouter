@@ -5,7 +5,7 @@ export default function mine (req, res, next) {
     
     res.render(`
         <div>Mine Router</div>
-        <div>切换到 Mine Router</div>
+        <div>当前动态参数：${params.id}</div>
         <div>Current Day: ${body.curday}</div>
     `)
 }
